@@ -123,7 +123,7 @@ signIn = async () => {
 
 #### `signInSilently()`
 
-May be called eg. in the `componentDidMount` of your main component. This method returns the [current user](#3-userinfo) and rejects with an error otherwise.
+May be called eg. in the `componentDidMount` of your main component. This method returns the [current user](#3-userinfo) if they signed in previously and rejects with an error otherwise.
 
 To see how to handle errors read [`signIn()` method](#signin)
 
@@ -222,6 +222,16 @@ Example `userInfo` which is returned after successful sign in.
     name: string // full name
   }
 }
+```
+
+## Jest module mock
+
+If you use Jest for testing, you may need to mock the functionality of this native module. This library ships with a Jest mock that you can add to the `setupFiles` array in the Jest config. By default, it behaves as if the calls were successful and returns mock user data.
+
+```
+"setupFiles": [
+  "./node_modules/react-native-google-signin/jest/RNGoogleSigninMock.js"
+],
 ```
 
 ## Notes
